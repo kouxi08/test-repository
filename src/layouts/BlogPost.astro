@@ -3,22 +3,29 @@ import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Title from '../components/BodyTitle.astro';
 import FormattedDate from '../components/FormattedDate.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
-type Props = CollectionEntry<'blog'>['data'];
+// type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+interface Props {
+    title : string
+}
+
+// const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const {title} = Astro.props;
 ---
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={SITE_TITLE}description={SITE_DESCRIPTION} />
 		<style>
-			main {
+			/* main {
 				width: calc(100% - 2em);
 				max-width: 100%;
-				margin: 0;
-			}
+				margin: 0; */
+			/* }
 			.hero-image {
 				width: 100%;
 			}
@@ -40,8 +47,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				padding: 1em 0;
 				text-align: center;
 				line-height: 1;
-			}
-			.title h1 {
+			} */
+			/* .title h1 {
 				margin: 0 0 0.5em 0;
 			}
 			.date {
@@ -50,19 +57,20 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			}
 			.last-updated-on {
 				font-style: italic;
-			}
+			} */
 		</style>
 	</head>
 
 	<body>
 		<Header />
+		<Title text = {title}/>
 		<main>
 			<article>
-				<div class="hero-image">
+				<!-- <div class="hero-image">
 					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
-				</div>
-				<div class="prose">
-					<div class="title">
+				</div> -->
+				<!-- <div class="prose"> -->
+					<!-- <div class="title">
 						<div class="date">
 							<FormattedDate date={pubDate} />
 							{
@@ -75,9 +83,9 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 						</div>
 						<h1>{title}</h1>
 						<hr />
-					</div>
+					</div> -->
 					<slot />
-				</div>
+				<!-- </div> -->
 			</article>
 		</main>
 		<Footer />
