@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/BlogPost.astro';
+import { getBlogs, getBlogDetail } from '../../micro_cms';
+//記事一覧のidを取得
+export async function getStaticPaths() {
+  const response = await getBlogs({ fields: ["id"] });
+  return response.contents.map((content: any) => ({
+    params: {
+      blogId: content.id,
+    },
+  }));
+}
+
+//記事の詳細情報を取得
+const { blogId } = Astro.params;
+const blog = await getBlogDetail(blogId as string);
+
+console.log(blog)
+console.log(process.env)
+---
+
+
+<!doctype html>
+<html lang="jp">
+  <head>
+    <meta charset="utf-8">
+  </head>
+	<body>
+        <main set:html={blog.content} />
+	</body>
+</html>
+
+

@@ -20,8 +20,22 @@
     "astro": "^3.4.0",
     "axios": "^1.6.2",
     "dotenv": "^16.3.1",
+    "microcms-js-sdk": "^2.7.0",
     "minio": "^7.1.3",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.2.2"
-  }
+  },
+  "description": "```sh docker compose build  docker compose up -d ```",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kouxi08/astro_blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kouxi08/astro_blog/issues"
+  },
+  "homepage": "https://github.com/kouxi08/astro_blog#readme"
 }

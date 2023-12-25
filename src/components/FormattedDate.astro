@@ -1,4 +1,4 @@
----
+<!-- ---
 interface Props {
 	date: Date;
 }
@@ -13,5 +13,28 @@ const { date } = Astro.props;
 			month: 'short',
 			day: 'numeric',
 		})
+	}
+</time> -->
+
+
+
+---
+
+interface Props {
+	date: Date;
+}
+
+const { date } = Astro.props;
+
+const year = date.getFullYear();
+const month = (date.getMonth() + 1).toString().padStart(2, '0');
+const day = date.getDate().toString().padStart(2, '0');
+
+---
+
+
+<time>
+	{
+		`${year}-${month}-${day}`
 	}
 </time>

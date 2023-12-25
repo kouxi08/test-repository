@@ -1,12 +1,13 @@
 ---
 import BaseHead from '../../components/BaseHead.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Layout from '../../layouts/BlogPost.astro'
-const posts = (await getCollection('blog')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-);
+import { getBlogs } from "../../micro_cms";
+//microcmsから["id", "title", "publishedAt", "eyecatch"] の項目を取得する
+const { contents: posts } = await getBlogs({ fields: ["id", "title", "publishedAt", "eyecatch"] });
+console.log(posts)
+
 ---
 
 <!doctype html>
@@ -17,17 +18,19 @@ const posts = (await getCollection('blog')).sort(
 
 	<body>
 		<Layout title = "blog">
+		<!-- <a href={`/blog/${post.slug}/`} class="relative font-FrankRuhlLibre"> -->
 		<main>
 			<section class="max-w-screen-2xl mx-auto">
 				<ul class=" flex-wrap content-center justify-center grid grid-cols-1 md:grid-cols-3 md:gap-x-16 lg:gap-x-16 gap-y-16 md:gap-y-16 mb-32">
 					{
 						posts.map((post) => (
+
 							<li class="">
-								<a href={`/blog/${post.slug}/`} class="relative font-FrankRuhlLibre">
-									<img class="object-cover w-full h-96" width={1000}height={500} src={post.data.heroImage} alt="" />
+								<a href={`/blog/${post.id}`} class="relative font-FrankRuhlLibre" data-id={post.id} data-title={post.title}>
+									<img class="object-cover w-full h-96" width={1000}height={500} src={post.eyecatch.url} alt="" />
 									<div class='text-2xl eading-snug text-white absolute bottom-0 p-2 w-full bg-gray-600 bg-opacity-40 '>
-										<p class="title">{post.data.title}</h4>
-										<p class="date text-right"><FormattedDate date={post.data.pubDate} /></p>
+										<p class="title">{post.title}</p>
+										<p class="date text-right"><FormattedDate date = {new Date(post.publishedAt)} /></p>
 									</div>
 								</a>
 							</li>
@@ -40,3 +43,4 @@ const posts = (await getCollection('blog')).sort(
 </html>
 
 
+../../../../wikijs
