@@ -15,19 +15,11 @@ export async function getStaticPaths() {
 const { blogId } = Astro.params;
 const blog = await getBlogDetail(blogId as string);
 
-console.log(blog)
-console.log(process.env)
+// console.log(blog)
+// console.log(process.env)
 ---
-
-
-<!doctype html>
-<html lang="jp">
-  <head>
-    <meta charset="utf-8">
-  </head>
-	<body>
+<Layout  title = "blog">
         <main set:html={blog.content} />
-	</body>
-</html>
+</Layout>
 
 

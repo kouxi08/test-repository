@@ -4,9 +4,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Layout from '../../layouts/BlogPost.astro'
 import { getBlogs } from "../../micro_cms";
+import Header from '../../components/Header.astro';
+import Title from '../../components/BodyTitle.astro';
 //microcmsから["id", "title", "publishedAt", "eyecatch"] の項目を取得する
 const { contents: posts } = await getBlogs({ fields: ["id", "title", "publishedAt", "eyecatch"] });
-console.log(posts)
+
+// console.log(import.meta.env)
+// console.log(posts)
 
 ---
 
@@ -17,7 +21,9 @@ console.log(posts)
 	</head>
 
 	<body>
+		<Header />
 		<Layout title = "blog">
+		<Title text = "blog"/>
 		<!-- <a href={`/blog/${post.slug}/`} class="relative font-FrankRuhlLibre"> -->
 		<main>
 			<section class="max-w-screen-2xl mx-auto">
@@ -26,7 +32,7 @@ console.log(posts)
 						posts.map((post) => (
 
 							<li class="">
-								<a href={`/blog/${post.id}`} class="relative font-FrankRuhlLibre" data-id={post.id} data-title={post.title}>
+								<a href={`/blog/${post.id}`} class="relative ">
 									<img class="object-cover w-full h-96" width={1000}height={500} src={post.eyecatch.url} alt="" />
 									<div class='text-2xl eading-snug text-white absolute bottom-0 p-2 w-full bg-gray-600 bg-opacity-40 '>
 										<p class="title">{post.title}</p>
@@ -41,6 +47,3 @@ console.log(posts)
 		</main>
 	</body>
 </html>
-
-
-../../../../wikijs

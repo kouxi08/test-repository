@@ -1,6 +1,8 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import Layout from '../layouts/BlogPost.astro';
+import Header from '../components/Header.astro';
+import Title from '../components/BodyTitle.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
@@ -19,7 +21,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
+		<Header />
 		<Layout title = "about">
+		<Title text = "about"/>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 				labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo

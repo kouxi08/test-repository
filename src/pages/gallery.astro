@@ -1,6 +1,8 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import Layout from '../layouts/BlogPost.astro';
+import Header from '../components/Header.astro';
+import Title from '../components/BodyTitle.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
@@ -10,7 +12,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
+		<Header />
 		<Layout title='gallery'>
+		<Title text = "gallery"/>
 			<div >
 				<div class="columns-2 md:columns-3 lg:columns-4 xl:columns-5 m-10 md:m-10 lg:m-8">
 					<img class="mb-4" src="gallery_image/IMG_0066 1.png">
