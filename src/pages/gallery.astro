@@ -3,7 +3,9 @@ import BaseHead from '../components/BaseHead.astro';
 import Layout from '../layouts/BlogPost.astro';
 import Header from '../components/Header.astro';
 import Title from '../components/BodyTitle.astro';
+import { minio_stream } from '../minio';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+const result =  minio_stream();
 ---
 
 <!doctype html>
