@@ -3,9 +3,24 @@ import BaseHead from '../components/BaseHead.astro';
 import Layout from '../layouts/BlogPost.astro';
 import Header from '../components/Header.astro';
 import Title from '../components/BodyTitle.astro';
-import { minio_stream } from '../minio';
+import { get_data_url } from '../minio';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-const result =  minio_stream();
+
+
+async function fetchData() {
+  try {
+    const presignedUrl = await get_data_url();
+    return presignedUrl; // 必要に応じて結果を返す
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+}
+
+// fetchData 関数を呼び出し、非同期処理の結果を待つ
+const results = await fetchData();
+// console.log(results)
+
 ---
 
 <!doctype html>
@@ -19,19 +34,13 @@ const result =  minio_stream();
 		<Title text = "gallery"/>
 			<div >
 				<div class="columns-2 md:columns-3 lg:columns-4 xl:columns-5 m-10 md:m-10 lg:m-8">
-					<img class="mb-4" src="gallery_image/IMG_0066 1.png">
-					<img class="mb-4" src="gallery_image/IMG_0111 1.png">
-					<img class="mb-4" src="gallery_image/IMG_0134 1.png">
-					<img class="mb-4" src="gallery_image/IMG_0198 1.png">
-					<img class="mb-4" src="gallery_image/IMG_0230 2.png">
-					<img class="mb-4" src="https://source.unsplash.com/random/2">
-					<img class="mb-4" src="https://source.unsplash.com/random/3">
-					<img class="mb-4" src="https://source.unsplash.com/random/4">
-					<img class="mb-4" src="https://source.unsplash.com/random/5">
-					<img class="mb-4" src="https://source.unsplash.com/random/6">
-					<img class="mb-4" src="https://source.unsplash.com/random/7">
-					<img class="mb-4" src="https://source.unsplash.com/random/8">
-					<img class="mb-4" src="https://source.unsplash.com/random/9">
+					{results && results.length > 0 ? (
+						results.map((url, index) => (
+						  <img class="mb-4" src={url} alt={`Image ${index}`} />
+						))
+					  ) : (
+						<p>No images available</p>
+					  )}
 				</div>
 			</div>
 		</Layout>
