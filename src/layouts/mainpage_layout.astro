@@ -3,15 +3,15 @@ import BaseHead from '../components/BaseHead.astro';
 import { ViewTransitions } from "astro:transitions";
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Title from '../components/BodyTitle.astro';
+import Header from '../components/Header.astro';
 
 interface Props {
     title : string
-	url : string
-	width : number
-	height : number
 }
 
-const {title, url, width, height} = Astro.props;
+// const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const {title} = Astro.props;
 ---
 
 <html lang="jp">
@@ -19,10 +19,11 @@ const {title, url, width, height} = Astro.props;
 		<ViewTransitions />
 		<BaseHead title={SITE_TITLE}description={SITE_DESCRIPTION} />
 	</head>
+
 	<body>
+        <Header />
+        <Title text = {title}/>
 		<main>
-			<h3>{title}</h3>
-			<img width={width} height={height} src={url} alt = "" />
 			<article>
 					<slot />
 			</article>
@@ -30,23 +31,3 @@ const {title, url, width, height} = Astro.props;
 		<Footer />
 	</body>
 </html>
-
-<style>
-	p {
-		margin-bottom: 1em;
-	}
-	.prose p {
-		margin-bottom: 2em;
-	}
-	main {
-		width: 1080px;
-		max-width: calc(100% - 2em);
-		margin: auto;
-		padding: 3em 1em;
-	}
-	:root {
-		--accent: #2337ff;
-		--accent-dark: #000d8a;
-	}
-	
-</style>

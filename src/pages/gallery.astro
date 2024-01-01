@@ -1,8 +1,6 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Layout from '../layouts/BlogPost.astro';
-import Header from '../components/Header.astro';
-import Title from '../components/BodyTitle.astro';
+import Layout from '../layouts/mainpage_layout.astro';
 import { get_data_url } from '../minio';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
@@ -29,14 +27,12 @@ const results = await fetchData();
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<Header />
 		<Layout title='gallery'>
-		<Title text = "gallery"/>
 			<div >
 				<div class="columns-2 md:columns-3 lg:columns-4 xl:columns-5 m-10 md:m-10 lg:m-8">
 					{results && results.length > 0 ? (
 						results.map((url, index) => (
-						  <img class="mb-4" src={url} alt={`Image ${index}`} />
+						  <img class="mb-4"  src={url} alt={`Image ${index}`} />
 						))
 					  ) : (
 						<p>No images available</p>

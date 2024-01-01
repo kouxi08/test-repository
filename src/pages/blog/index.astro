@@ -2,10 +2,8 @@
 import BaseHead from '../../components/BaseHead.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import FormattedDate from '../../components/FormattedDate.astro';
-import Layout from '../../layouts/BlogPost.astro'
+import Layout from '../../layouts/mainpage_layout.astro'
 import { getBlogs } from "../../micro_cms";
-import Header from '../../components/Header.astro';
-import Title from '../../components/BodyTitle.astro';
 //microcmsから["id", "title", "publishedAt", "eyecatch"] の項目を取得する
 const { contents: posts } = await getBlogs({ fields: ["id", "title", "publishedAt", "eyecatch"] });
 
@@ -19,18 +17,14 @@ const { contents: posts } = await getBlogs({ fields: ["id", "title", "publishedA
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
-
 	<body>
-		<Header />
 		<Layout title = "blog">
-		<Title text = "blog"/>
 		<!-- <a href={`/blog/${post.slug}/`} class="relative font-FrankRuhlLibre"> -->
 		<main>
 			<section class="max-w-screen-2xl mx-auto">
 				<ul class=" flex-wrap content-center justify-center grid grid-cols-1 md:grid-cols-3 md:gap-x-16 lg:gap-x-16 gap-y-16 md:gap-y-16 mb-32">
 					{
 						posts.map((post) => (
-
 							<li class="">
 								<a href={`/blog/${post.id}`} class="relative ">
 									<img class="object-cover w-full h-96" width={1000}height={500} src={post.eyecatch.url} alt="" />

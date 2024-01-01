@@ -36,5 +36,10 @@
   "bugs": {
     "url": "https://github.com/kouxi08/astro_blog/issues"
   },
-  "homepage": "https://github.com/kouxi08/astro_blog#readme"
+  "homepage": "https://github.com/kouxi08/astro_blog#readme",
+  
+
+  "zenn-content-css": "^0.1.140",
+  "zenn-embed-elements": "^0.1.140",
+  "zenn-markdown-html": "^0.1.140"
 }

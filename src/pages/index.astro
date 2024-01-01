@@ -1,34 +1,10 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
-
-
-
-
-
-
-
-
-// minio(function(e: any, bucketStream: any){
-//     if (e) {
-//         return console.log(e);
-//     }
-
-//     bucketStream.on('data', function(obj: any) {
-//         console.log(obj);
-//     });
-// });
 ---
-
-
-
-
-
-
 
 <!doctype html>
 <html lang="jp">
@@ -36,7 +12,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<Header title={SITE_TITLE} />
 		<main>
 		</main>
 		<Footer />

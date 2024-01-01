@@ -2,7 +2,7 @@ FROM node:18.14.1-slim as node
 WORKDIR /usr/src/app
 COPY . /usr/src/app
 RUN npm install
-RUN npm run build
+# RUN npm run build
 
 
 # FROM nginx:alpine AS runtime
