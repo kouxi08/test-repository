@@ -21,8 +21,10 @@ const {title, url, width, height} = Astro.props;
 	</head>
 	<body>
 		<main>
-			<h3>{title}</h3>
-			<img width={width} height={height} src={url} alt = "" />
+			<h2>{title}</h2>
+			<div class="relative h-0 overflow-hidden pb-[57%]">
+				<img src={url} alt="" class="absolute inset-0 w-full h-full object-cover">
+			</div>
 			<article>
 					<slot />
 			</article>
@@ -45,8 +47,8 @@ const {title, url, width, height} = Astro.props;
 		padding: 3em 1em;
 	}
 	:root {
-		--accent: #2337ff;
-		--accent-dark: #000d8a;
+		--accent: #999999;
+		--accent-dark: #a4a4a4;
 	}
-	
+
 </style>

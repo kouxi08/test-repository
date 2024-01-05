@@ -3,7 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Layout from '../layouts/mainpage_layout.astro';
 import { get_data_url } from '../minio';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-
+export const prerender = false;
 
 async function fetchData() {
   try {

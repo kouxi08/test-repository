@@ -1,14 +1,13 @@
 ---
 import Layout from '../../layouts/BlogPost.astro';
 import { getBlogs, getBlogDetail } from '../../micro_cms';
-const { contents: posts } = await getBlogs({ fields: ["title", "publishedAt", "eyecatch"] });
-
 
 
 
 //記事一覧のidを取得
 export async function getStaticPaths() {
   const response = await getBlogs({ fields: ["id"] });
+  console.log(response)
   return response.contents.map((content: any) => ({
     params: {
       blogId: content.id,
@@ -21,6 +20,7 @@ const { blogId } = Astro.params;
 const blog = await getBlogDetail(blogId as string);
 
 console.log(blog)
+export const prerender = false;
 // console.log(process.env)
 ---
 <Layout  title ={blog.title} url= {blog.eyecatch.url} width={blog.eyecatch.width} height={blog.eyecatch.height}>

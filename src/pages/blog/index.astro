@@ -4,6 +4,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Layout from '../../layouts/mainpage_layout.astro'
 import { getBlogs } from "../../micro_cms";
+export const prerender = false;
 //microcmsから["id", "title", "publishedAt", "eyecatch"] の項目を取得する
 const { contents: posts } = await getBlogs({ fields: ["id", "title", "publishedAt", "eyecatch"] });
 
