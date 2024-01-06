@@ -1,8 +1,8 @@
 ---
 const today = new Date();
 ---
-<section class="mt-14">
-	<div class="border-b border-gray-300 w-full absolute"></div>
+<section>
+	<div/>
 	<footer>
 		&copy; {today.getFullYear()} kouxi. All rights reserved.
 	</footer>
@@ -10,6 +10,14 @@ const today = new Date();
 
 
 <style>
+	section {
+		margin-top: 3.5rem
+	}
+	div {
+		border-bottom: 1px solid #e5e7eb; /* equivalent to border-b border-gray-300 */
+		width: 100%; /* equivalent to w-full */
+		position: absolute; /* equivalent to absolute */
+	}
 	footer {
 		padding: 2em 1em 2em 1em;
 		background: linear-gradient(var(--gray-gradient)) no-repeat;

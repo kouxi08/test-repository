@@ -1,5 +1,5 @@
 import * as Minio from 'minio'
-import { preProcessFile } from 'typescript';
+
 
 
 
@@ -65,7 +65,6 @@ export const get_data_url = async (): Promise<string[]> => {
         });
         urls.push(presignedUrl);
       }));
-      
       return urls;
     } else {
       throw new Error('No object names available.');

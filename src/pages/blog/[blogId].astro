@@ -2,8 +2,6 @@
 import Layout from '../../layouts/BlogPost.astro';
 import { getBlogs, getBlogDetail } from '../../micro_cms';
 
-
-
 //記事一覧のidを取得
 export async function getStaticPaths() {
   const response = await getBlogs({ fields: ["id"] });

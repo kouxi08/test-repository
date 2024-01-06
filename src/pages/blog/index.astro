@@ -7,10 +7,6 @@ import { getBlogs } from "../../micro_cms";
 export const prerender = false;
 //microcmsから["id", "title", "publishedAt", "eyecatch"] の項目を取得する
 const { contents: posts } = await getBlogs({ fields: ["id", "title", "publishedAt", "eyecatch"] });
-
-
-
-
 ---
 
 <!doctype html>
@@ -20,18 +16,19 @@ const { contents: posts } = await getBlogs({ fields: ["id", "title", "publishedA
 	</head>
 	<body>
 		<Layout title = "blog">
-		<!-- <a href={`/blog/${post.slug}/`} class="relative font-FrankRuhlLibre"> -->
 		<main>
-			<section class="max-w-screen-2xl mx-auto">
-				<ul class=" flex-wrap content-center justify-center grid grid-cols-1 md:grid-cols-3 md:gap-x-16 lg:gap-x-16 gap-y-16 md:gap-y-16 mb-32">
+			<section>
+				<ul>
 					{
 						posts.map((post) => (
-							<li class="">
-								<a href={`/blog/${post.id}`} class="relative ">
-									<img class="object-cover w-full h-96" width={1000}height={500} src={post.eyecatch.url} alt="" />
-									<div class='text-2xl eading-snug text-white absolute bottom-0 p-2 w-full bg-gray-600 bg-opacity-40 '>
-										<p class="title">{post.title}</p>
-										<p class="date text-right"><FormattedDate date = {new Date(post.publishedAt)} /></p>
+							<li>
+								<a href={`/blog/${post.id}`}>
+									<img width={1000}height={500} src={post.eyecatch.url} alt="" />
+									<div>
+										<p> {post.title} </p>
+										<p class="date">
+											<FormattedDate date = {new Date(post.publishedAt)}/>
+										</p>
 									</div>
 								</a>
 							</li>
@@ -42,3 +39,58 @@ const { contents: posts } = await getBlogs({ fields: ["id", "title", "publishedA
 		</main>
 	</body>
 </html>
+
+<style>
+	section {
+		max-width: 1536px;
+		margin-left: auto;
+    	margin-right: auto;
+	}
+	img {
+		width: 100%;
+		height: 24rem;
+		object-fit: cover;
+	}
+	a {
+		position: relative;
+	}
+	ul {
+		flex-wrap: wrap;
+		align-content: center;
+		justify-content: center;
+		display: grid;
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+		row-gap: 4rem/* 64px */;
+		margin-bottom: 8rem/* 128px */;
+
+	}
+	@media (min-width: 768px) {
+		ul {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			column-gap: 4rem/* 64px */;
+			row-gap: 4rem/* 64px */;
+		}
+	}
+	@media (min-width: 1024px) {
+		ul {
+			column-gap: 4rem/* 64px */;
+		}
+	}
+	div {
+		font-size: 1.5rem/* 24px */;
+    	line-height: 2rem/* 32px */;
+		line-height: 1.375;
+		--tw-text-opacity: 1;
+    	color: rgb(255 255 255 / var(--tw-text-opacity));
+		position: absolute;
+		bottom: 0px;
+		padding: 0.5rem/* 8px */;
+		width: 100%;
+		--tw-bg-opacity: 1;
+    	background-color: rgb(75 85 99 / var(--tw-bg-opacity));
+		--tw-bg-opacity: 0.4;
+	}
+	.date {
+		text-align: right;
+	}
+</style>

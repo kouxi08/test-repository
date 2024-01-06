@@ -4,14 +4,14 @@ import { ViewTransitions } from "astro:transitions";
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
+const {title, url, width, height} = Astro.props;
+
 interface Props {
     title : string
 	url : string
 	width : number
 	height : number
 }
-
-const {title, url, width, height} = Astro.props;
 ---
 
 <html lang="jp">
@@ -21,25 +21,19 @@ const {title, url, width, height} = Astro.props;
 	</head>
 	<body>
 		<main>
-			<h2>{title}</h2>
-			<div class="relative h-0 overflow-hidden pb-[57%]">
-				<img src={url} alt="" class="absolute inset-0 w-full h-full object-cover">
+			<h3>{title}</h3>
+			<div>
+				<img src={url} alt="">
 			</div>
 			<article>
 					<slot />
 			</article>
 		</main>
-		<Footer />
+		<Footer/>
 	</body>
 </html>
 
 <style>
-	p {
-		margin-bottom: 1em;
-	}
-	.prose p {
-		margin-bottom: 2em;
-	}
 	main {
 		width: 1080px;
 		max-width: calc(100% - 2em);
@@ -50,5 +44,17 @@ const {title, url, width, height} = Astro.props;
 		--accent: #999999;
 		--accent-dark: #a4a4a4;
 	}
-
+	div {
+		position: relative; /* equivalent to relative */
+		height: 0; /* equivalent to h-0 */
+		overflow: hidden; /* equivalent to overflow-hidden */
+		padding-bottom: 57%; /* equivalent to pb-[57%] */
+	}
+	img {
+		position: absolute; /* equivalent to absolute */
+		inset: 0; /* equivalent to inset-0 */
+		width: 100%; /* equivalent to w-full */
+		height: 100%; /* equivalent to h-full */
+		object-fit: cover; /* equivalent to object-cover */
+	}
 </style>
