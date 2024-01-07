@@ -24,11 +24,12 @@ const results = await fetchData();
 <html lang="jp">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/css/lightbox.min.css" />
 	</head>
 	<body>
 		<Layout title='gallery'>
-			<div >
-				<div class="columns-2 md:columns-3 lg:columns-4 xl:columns-5 m-10 md:m-10 lg:m-8">
+			<ul>
+				<li class="columns-2 md:columns-3 lg:columns-4 xl:columns-5 m-10 md:m-10 lg:m-8">
 					{results && results.length > 0 ? (
 						results.map((url, index) => (
 						  <img src={url} alt={`Image ${index}`} />
@@ -36,8 +37,10 @@ const results = await fetchData();
 					  ) : (
 						<p>No images available</p>
 					  )}
-				</div>
-			</div>
+				</li>
+			</ul>
+			<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/js/lightbox.min.js"></script>
 		</Layout>
 	</body>
 </html>

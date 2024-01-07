@@ -21,7 +21,6 @@ console.log(blog)
 export const prerender = false;
 // console.log(process.env)
 ---
-<Layout  title ={blog.title} url= {blog.eyecatch.url} width={blog.eyecatch.width} height={blog.eyecatch.height}>
+<Layout  title= {blog.title} url= {blog.eyecatch.url} createdat= {blog.createdAt}>
         <main set:html={blog.content} />
 </Layout>
-

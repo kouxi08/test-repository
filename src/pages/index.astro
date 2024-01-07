@@ -1,9 +1,7 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-
+import HeaderLink from '../components/HeaderLink.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-
 ---
 
 <!doctype html>
@@ -12,8 +10,144 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
+		<header>
+			<img src="bg_image/IMG_0054.png" class="bg_img"/>
+			<p class="icon">kouxi photo</p>
+			<div class="border">
+				<div class="width-border"/>
+				<div class="height-border"/>
+			</div>
+			<>
+			<nav>
+				<ul class = "link">
+					<li class = "page_link">
+						<HeaderLink href="/blog">blog</HeaderLink>
+					</li>
+					<li class="page_link">
+						<HeaderLink href="/gallery">gallery</HeaderLink>
+					</li>
+					<!-- <p class="page_link">
+						<HeaderLink href="/about">About</HeaderLink>
+					</p> -->
+				</ul>
+			</nav>
+			<nav>
+				<div class = "sns">
+					<p>
+						<HeaderLink href="https://twitter.com/KouXi_3840">
+							<img src="gallery_image/x.png"width={20} height={20} class="sns_img"/>
+						</HeaderLink>
+					</p>
+					<p>
+						<HeaderLink href="https://www.instagram.com/kou.0003">
+							<img src="gallery_image/Instagram.png" width={25} height={25} class="sns_img"/>
+						</HeaderLink>
+					</p>
+				</div>
+			</nav>
+		</header>
 		<main>
 		</main>
-		<Footer />
 	</body>
 </html>
+
+<link href='https://fonts.googleapis.com/css?family=Freehand' rel='stylesheet'>
+<link href="https://fonts.googleapis.com/css?family=GFS+Didot" rel="stylesheet">
+
+
+<style>
+	body {
+		color: white;
+	}
+	header {
+		flex-direction: column;
+		align-items: center;
+	}
+	@media (min-width: 768px) {
+		header {
+			flex-direction: row;
+		}
+		header{
+			justify-content: space-between;
+		}
+	}
+	.bg_img {
+		width: 100vw; /* 画面の横幅に合わせる */
+  		height: 100vh; /* 画面の縦幅に合わせる */
+		position: relative;
+		object-fit: cover;
+	}
+	.link{
+		font-family: "GFS Didot";font-size: 22px;
+		display: flex;
+		list-style: none;
+		font-size: 1.5rem; /* text-2xl */
+		position: absolute; /* absolute */
+		top: 0; /* top-0 */
+		right: 6rem; /* right-0 */
+		padding: 2.5rem/* 32px */;
+	}
+	.link li a {
+		display: block;
+		text-decoration: none;
+	}
+	.link li a {
+		position: relative;
+	}
+	.link li a:hover {
+		color:#eeeeee;
+	}
+	.link li a::after {
+		content: '';
+		position: absolute;
+		left: -5%;
+		width: 105%;
+		bottom: -40px;
+		height: 4px; /* 線の太さ */
+		background-color: #fffffff0; /* 線の色 */
+		transition: all .3s;
+		transform: scale(0, 1);/*X方向0、Y方向1*/
+		transform-origin: center top;/*上部中央基点*/
+	}
+	.link li a:hover::after {
+		transform: scale(1, 1);/*X方向にスケール拡大*/
+	}
+
+	.page_link {
+		margin-left: 1.25rem/* 20px */;
+    	margin-right: 1.25rem/* 20px */;
+		letter-spacing: 10px
+	}
+	.sns {
+		position: absolute; /* absolute */
+		top: 45%; /* top-0 */
+		right: 2%; /* right-0 */
+	}
+	.sns_img {
+		padding-bottom: 50px;
+	}
+	.border {
+		color: white;
+	}
+	.width-border {
+		border-top: 1px solid rgb(255, 255, 255); /* 1ピクセルの実線のボーダーを右に設定 */
+		width: 100%;
+		height: 0.4px;
+		position: absolute;
+		top: 7.5rem/* 96px */;
+	}
+	.height-border {
+		border-right: 1px solid rgb(255, 255, 255); /* 1ピクセルの実線のボーダーを右に設定 */
+		height: 100%;
+		top: 0;
+		position: absolute;
+		right: 6rem;
+	}
+	.icon {
+		font-family: 'Freehand';font-size: 22px;
+		font-size: 125px;
+		top: 45%; /* top-0 */
+		left: 9%; /* right-0 */
+		position: absolute; /* absolute */
+	}
+</style>

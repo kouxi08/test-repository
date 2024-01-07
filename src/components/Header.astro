@@ -1,115 +1,18 @@
 ---
-import HeaderLink from './HeaderLink.astro';
+import HeaderLink from '../components/HeaderLink.astro';
 ---
+<p>
+	<HeaderLink href="/">kouxi photo</HeaderLink>
+</p>
 
-<header>
-	<img src="gallery_image/umeda.png" class="bg_img"/>
-	<div class="border"></div>
-	<div>
-	<>
-      </div>
-	<nav>
-		<div class="header_all divide-x ">
-			<div class = "link">
-				<p class = "page_link">
-					<HeaderLink href="/blog">Blog</HeaderLink>
-				</p>
-				<p class="page_link">
-					<HeaderLink href="/gallery">Gallery</HeaderLink>
-				</p>
-				<!-- <p class="page_link">
-					<HeaderLink href="/about">About</HeaderLink>
-				</p> -->
-			</div>
-			<div class = "sns">
-				<p>
-					<HeaderLink href="https://twitter.com/KouXi_3840">
-						<img src="gallery_image/x.png"width={20} height={20} class="sns_img"/>
-					</HeaderLink>
-				</p>
-				<p>
-					<HeaderLink href="https://www.instagram.com/kou.0003">
-						<img src="gallery_image/Instagram.png" width={25} height={25} class="sns_img"/>
-					</HeaderLink>
-				</p>
-			</div>
-		</div>
-	</nav>
-</header>
-
+<link href='https://fonts.googleapis.com/css?family=Freehand' rel='stylesheet'>
 
 <style>
-	header {
-		flex-direction: column;
-		align-items: center;
-	}
-	@media (min-width: 768px) {
-		header {
-			flex-direction: row;
-		}
-		header{
-			justify-content: space-between;
-		}
-	}
-	nav {
-		--tw-text-opacity: 1;
-    	color: rgb(255 255 255 / var(--tw-text-opacity));
-		font-size: 1.5rem/* 24px */;
-    	line-height: 2rem/* 32px */;
-		display: flex;
-		position: absolute;
-		top: 0px;
-		right: 0px;
-		padding: 2rem/* 32px */;
-	}
-	.bg_img {
-		height: 100vh;
-		position: relative;
-	}
-	@media (min-width: 768px) {
-			.bg_img{
-			width: auto;
-			}
-
-			.bg_img{
-			height: auto;
-			}
-	}
-	.header_all {
-		font-size: 1.5rem; /* text-2xl */
-		margin-right: 2rem; /* mr-16 */
-		margin-right: 4rem/* 64px */;
-		display: flex; /* flex */
-		position: absolute; /* absolute */
-		top: 0px; /* top-0 */
-		right: 0px; /* right-0 */
-		padding: 2rem/* 32px */;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-	}
-	.link{
-		font-family: Frank Ruhl Libre, serif;
-		display: flex;
-	}
-	.page_link {
-		margin-left: 1.25rem/* 20px */;
-    	margin-right: 1.25rem/* 20px */;
-	}
-	.sns {
-		display: flex;
-		justify-content: center;
-		left: 0px;
-	}
-	.sns_img {
-		margin-left: 1.75rem/* 28px */;
-    	margin-right: 1.75rem/* 28px */;
-	}
-	.border {
-		border-bottom-width: 1px;
-		--tw-border-opacity: 1;
-    	border-color: rgb(255 255 255 / var(--tw-border-opacity));
-		width: 100%;
-		position: absolute;
-		top: 6rem/* 96px */;
+	p {
+		text-align: center;
+		margin-top: 2rem;
+		font-family: 'Freehand';
+		color: #8F8F8F;
+		font-size: 2rem;
 	}
 </style>
-

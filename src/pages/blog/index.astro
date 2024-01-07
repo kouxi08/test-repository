@@ -18,18 +18,18 @@ const { contents: posts } = await getBlogs({ fields: ["id", "title", "publishedA
 		<Layout title = "blog">
 		<main>
 			<section>
-				<ul>
+				<ul class="container">
 					{
 						posts.map((post) => (
 							<li>
 								<a href={`/blog/${post.id}`}>
 									<img width={1000}height={500} src={post.eyecatch.url} alt="" />
-									<div>
-										<p> {post.title} </p>
-										<p class="date">
+									<ul class="container-element">
+										<li class="title"> {post.title} </li>
+										<li class="date">
 											<FormattedDate date = {new Date(post.publishedAt)}/>
-										</p>
-									</div>
+										</li>
+									</ul>
 								</a>
 							</li>
 						))
@@ -40,8 +40,11 @@ const { contents: posts } = await getBlogs({ fields: ["id", "title", "publishedA
 	</body>
 </html>
 
+<link href='https://fonts.googleapis.com/css?family=Baloo Bhaijaan 2' rel='stylesheet'>
+
 <style>
 	section {
+		font-family: 'Baloo Bhaijaan 2';
 		max-width: 1536px;
 		margin-left: auto;
     	margin-right: auto;
@@ -54,7 +57,7 @@ const { contents: posts } = await getBlogs({ fields: ["id", "title", "publishedA
 	a {
 		position: relative;
 	}
-	ul {
+	.container {
 		flex-wrap: wrap;
 		align-content: center;
 		justify-content: center;
@@ -65,18 +68,19 @@ const { contents: posts } = await getBlogs({ fields: ["id", "title", "publishedA
 
 	}
 	@media (min-width: 768px) {
-		ul {
+		.container {
 			grid-template-columns: repeat(3, minmax(0, 1fr));
 			column-gap: 4rem/* 64px */;
 			row-gap: 4rem/* 64px */;
 		}
 	}
 	@media (min-width: 1024px) {
-		ul {
+		.container {
 			column-gap: 4rem/* 64px */;
 		}
 	}
-	div {
+
+	.container-element {
 		font-size: 1.5rem/* 24px */;
     	line-height: 2rem/* 32px */;
 		line-height: 1.375;

@@ -3,14 +3,15 @@ import BaseHead from '../components/BaseHead.astro';
 import { ViewTransitions } from "astro:transitions";
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Header from '../components/Header.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 
-const {title, url, width, height} = Astro.props;
+const {title, url, createdat} = Astro.props;
 
 interface Props {
     title : string
 	url : string
-	width : number
-	height : number
+	createdat : string
 }
 ---
 
@@ -18,11 +19,17 @@ interface Props {
 	<head>
 		<ViewTransitions />
 		<BaseHead title={SITE_TITLE}description={SITE_DESCRIPTION} />
+		
 	</head>
 	<body>
+		<Header />
 		<main>
-			<h3>{title}</h3>
-			<div>
+			
+			<p class="date">
+				<FormattedDate date = {new Date(createdat)}/>
+			</p>
+			<h2 class="title">{title}</h2>
+			<div class="eyecatch_url">
 				<img src={url} alt="">
 			</div>
 			<article>
@@ -33,22 +40,29 @@ interface Props {
 	</body>
 </html>
 
+<link href='https://fonts.googleapis.com/css?family=Baloo Bhaijaan 2' rel='stylesheet'>
+
 <style>
 	main {
+		font-family: 'Baloo Bhaijaan 2';
 		width: 1080px;
 		max-width: calc(100% - 2em);
 		margin: auto;
-		padding: 3em 1em;
+		padding: 0em 1em;
+		color:#707070
 	}
 	:root {
 		--accent: #999999;
 		--accent-dark: #a4a4a4;
 	}
-	div {
+	.eyecatch_url {
 		position: relative; /* equivalent to relative */
 		height: 0; /* equivalent to h-0 */
 		overflow: hidden; /* equivalent to overflow-hidden */
 		padding-bottom: 57%; /* equivalent to pb-[57%] */
+	}
+	div {
+		display: flex;
 	}
 	img {
 		position: absolute; /* equivalent to absolute */
@@ -56,5 +70,18 @@ interface Props {
 		width: 100%; /* equivalent to w-full */
 		height: 100%; /* equivalent to h-full */
 		object-fit: cover; /* equivalent to object-cover */
+		padding-bottom: 50px;
 	}
+	.title {
+		top: 0;
+		padding-top: 5px;
+		padding-bottom: 10px;
+	}
+	.date {
+		margin: -1px;
+		font-size: 15px;
+		content: "\f52d"; /* feather */
+		
+	}
+
 </style>

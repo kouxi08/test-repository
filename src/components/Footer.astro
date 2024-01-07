@@ -4,13 +4,16 @@ const today = new Date();
 <section>
 	<div/>
 	<footer>
-		&copy; {today.getFullYear()} kouxi. All rights reserved.
+		&copy; {today.getFullYear()} kouxi photo
 	</footer>
 </section>
 
+<link href="https://fonts.googleapis.com/css?family=GFS+Didot" rel="stylesheet">
 
 <style>
 	section {
+		font-family: "GFS Didot";font-size: 22px;
+		color: #8F8F8F; /* equivalent to text-gray-500 */
 		margin-top: 3.5rem
 	}
 	div {
@@ -19,6 +22,7 @@ const today = new Date();
 		position: absolute; /* equivalent to absolute */
 	}
 	footer {
+		font-size: 15px;
 		padding: 2em 1em 2em 1em;
 		background: linear-gradient(var(--gray-gradient)) no-repeat;
 		color: rgb(var(--gray));
