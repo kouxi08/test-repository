@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: astro-app
+    container_name: astro-blog
     volumes:
       - .:/usr/src/app
     ports:

@@ -8,7 +8,7 @@ export const prerender = false;
 async function fetchData() {
   try {
     const presignedUrl = await get_data_url();
-    return presignedUrl; // 必要に応じて結果を返す
+    return presignedUrl;
   } catch (err) {
     console.error(err);
     return null;
@@ -17,14 +17,13 @@ async function fetchData() {
 
 // fetchData 関数を呼び出し、非同期処理の結果を待つ
 const results = await fetchData();
-// console.log(results)
+console.log(results)
 ---
 
 <!doctype html>
 <html lang="jp">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/css/lightbox.min.css" />
 	</head>
 	<body>
 		<Layout title='gallery'>
@@ -39,14 +38,12 @@ const results = await fetchData();
 					  )}
 				</li>
 			</ul>
-			<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/js/lightbox.min.js"></script>
 		</Layout>
 	</body>
 </html>
 
 <style>
 	img {
-		margin-bottom: 1rem/* 16px */;
+		margin-bottom: 1rem;
 	}
 </style>

@@ -4,7 +4,6 @@ export default {
 	theme: {
 		extend: {},
 		fontFamily: {
-			FrankRuhlLibre: ['Frank Ruhl Libre', 'serif' ]
 		}
 	},
 	plugins: [],

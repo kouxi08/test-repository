@@ -1,18 +1,13 @@
 import * as Minio from 'minio'
 
-
-
-
-
 const minioClient = new Minio.Client({
-  endPoint: import.meta.env.MINIO_ENDPOINT,
-  port: parseInt(import.meta.env.MINIO_PORT),
-  useSSL: import.meta.env.MINIO_USE_SSL === 'true',
-  accessKey: import.meta.env.MINIO_ACCESS_KEY,
-  secretKey: import.meta.env.MINIO_SECRET_ACCESS_KEY,
-})
 
-const obj_name = []
+  endPoint: import.meta.env.ENDPOINT,
+  port: parseInt(import.meta.env.MINIO_PORT),
+  useSSL: import.meta.env.USESSL === 'true',
+  accessKey: import.meta.env.ACCESS_KEY,
+  secretKey: import.meta.env.SECRET_ACCESS_KEY,
+})
 
 
 
