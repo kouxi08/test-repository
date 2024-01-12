@@ -2,7 +2,12 @@
 
 ## Astro + microCMS
 
-
+## docker command
+```
+docker build -t <projectname> .
+docker run -p 4321:4321 <projectname>
+```
+## docker compose command
 ```sh
 docker compose build 
 docker compose up -d
