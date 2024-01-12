@@ -37,10 +37,9 @@ export const get_data_url = async (): Promise<string[]> => {
     const objectNames = await get_object_name();
     console.log(objectNames);
 
-    // objectNamesが空でないことを確認
     if (objectNames.length > 0) {
       await Promise.all(objectNames.map(async (objectName) => {
-        const data_name = objectName; // 一つ目の要素を使用
+        const data_name = objectName; 
         const presignedUrl = await new Promise<string>((resolve, reject) => {
           minioClient.presignedUrl(
             'GET',
@@ -52,7 +51,7 @@ export const get_data_url = async (): Promise<string[]> => {
               if (err) {
                 reject(err);
               } else {
-                resolve(url as string); // explicitly cast to string
+                resolve(url as string); 
               }
             },
           );
