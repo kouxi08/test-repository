@@ -6,7 +6,6 @@ COPY . /usr/src/app
 ARG domain
 ARG apikey
 ARG endpoint
-ARG port
 ARG usessl
 ARG accesskey
 ARG secretkey
@@ -14,8 +13,7 @@ ARG secretkey
 ENV MICROCMS_SERVICE_DOMAIN=${domain}
 ENV MICROCMS_API_KEY=${apikey}
 ENV ENDPOINT=${endpoint}
-ENV MINIO_PORT=${port}
-ENV USE_SSL=false
+ENV USE_SSL=true
 ENV ACCESS_KEY=${accesskey}
 ENV SECRET_ACCESS_KEY=${secretkey}
 
