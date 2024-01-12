@@ -1,6 +1,4 @@
-# Astro Blog
-
-## Astro + microCMS
+## Astro + microCMS + minio
 
 ## docker command
 ```
