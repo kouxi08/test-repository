@@ -10,7 +10,6 @@ interface Props {
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
 const { title,description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 ---
 
@@ -27,7 +26,6 @@ const { title,description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <link href='https://fonts.googleapis.com/css?family=Freehand' rel='stylesheet'>
 <link href="https://fonts.googleapis.com/css?family=GFS+Didot" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Baloo Bhaijaan 2' rel='stylesheet'>
-
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>

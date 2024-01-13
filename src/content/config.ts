@@ -18,7 +18,6 @@ const blog = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
-		
 	}),
 });
 

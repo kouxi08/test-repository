@@ -27,9 +27,12 @@ export type BlogResponse = {
   contents: Blog[];
 };
 
+//microCMSで記述されたブログ一覧を取得する
 export const getBlogs = async (queries?: MicroCMSQueries) => {
   return await client.get<BlogResponse>({ endpoint: "blogs", queries });
 };
+
+//contentIDのブログの詳細を返す処理
 export const getBlogDetail = async (
   contentId: string,
   queries?: MicroCMSQueries

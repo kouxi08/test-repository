@@ -8,8 +8,7 @@ const minioClient = new Minio.Client({
   secretKey: import.meta.env.SECRET_ACCESS_KEY,
 })
 
-
-
+//バケット内に存在するオブジェクト名の一覧を取得する
 export const get_object_name = (): Promise<string[]> => {
   return new Promise((resolve, reject) => {
     const objectNames: string[] = [];
@@ -30,6 +29,8 @@ export const get_object_name = (): Promise<string[]> => {
     });
   });
 };
+
+//バケット内のオブジェクトにアクセスするためのURLを発行する
 export const get_data_url = async (): Promise<string[]> => {
   var urls: string[] = [];
   try {
@@ -39,7 +40,7 @@ export const get_data_url = async (): Promise<string[]> => {
 
     if (objectNames.length > 0) {
       await Promise.all(objectNames.map(async (objectName) => {
-        const data_name = objectName; 
+        const data_name = objectName;
         const presignedUrl = await new Promise<string>((resolve, reject) => {
           minioClient.presignedUrl(
             'GET',
@@ -51,7 +52,7 @@ export const get_data_url = async (): Promise<string[]> => {
               if (err) {
                 reject(err);
               } else {
-                resolve(url as string); 
+                resolve(url as string);
               }
             },
           );
