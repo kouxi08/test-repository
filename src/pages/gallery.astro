@@ -27,16 +27,16 @@ console.log(results)
 	</head>
 	<body>
 		<Layout title='gallery'>
-			<ul>
-				<li class="columns-2 md:columns-3 lg:columns-4 xl:columns-5 m-10 md:m-10 lg:m-8">
-					{results && results.length > 0 ? (
-						results.map((url, index) => (
-						  <img src={url} alt={`Image ${index}`} loading="lazy"/>
-						))
-					  ) : (
-						<p>No images available</p>
-					  )}
-				</li>
+			<ul class="columns-2 md:columns-3 lg:columns-4 xl:columns-5 mr-10 ml-10">
+				{results && results.length > 0 ? (
+					results.map((url, index) => (
+						<li>
+							<img src={url} alt={`Image ${index}`} />
+						</li>
+					))
+					) : (
+					<p>No images available</p>
+					)}
 			</ul>
 		</Layout>
 	</body>
