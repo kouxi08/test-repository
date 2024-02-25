@@ -5,6 +5,7 @@ import { get_data_url } from '../minio';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 export const prerender = false;
 
+
 async function fetchData() {
   try {
     const presignedUrl = await get_data_url();
@@ -14,8 +15,6 @@ async function fetchData() {
     return null;
   }
 }
-
-// fetchData 関数を呼び出し、非同期処理の結果を待つ
 const results = await fetchData();
 console.log(results)
 ---
@@ -25,25 +24,89 @@ console.log(results)
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
-	<body>
+	<body >
 		<Layout title='gallery'>
-			<ul class="columns-2 md:columns-3 lg:columns-4 xl:columns-5 mr-10 ml-10">
-				{results && results.length > 0 ? (
-					results.map((url, index) => (
-						<li>
-							<img src={url} alt={`Image ${index}`} />
-						</li>
-					))
-					) : (
-					<p>No images available</p>
-					)}
-			</ul>
+			<div id="loading">
+				<div class="spinner"></div>
+			</div>
+			<div id="imageContainer" style="display: none;">
+				<!-- <Loading /> -->
+				<ul class="columns-2 md:columns-3 lg:columns-4 xl:columns-5 mr-10 ml-10" >
+					{results && results.length > 0 ? (
+						results.map((url, index) => (
+							<li>
+								<img src={url} alt={`Image ${index}`} />
+							</li>
+						))
+						) : (
+							<p>No images available</p>
+						)}
+				</ul>
+			</div>
 		</Layout>
+		<script>
+			// 画像のロードが完了したら非表示のCSSを削除し、画像を表示する
+			window.onload = function()  {
+				const imageContainer = document.getElementById('imageContainer');
+				const loading = document.getElementById('loading');
+				if (imageContainer && loading) {
+					imageContainer.style.display = 'block';
+					loading.style.display = 'none';
+				}
+			}
+			// ローディング画面を表示する
+			document.addEventListener('DOMContentLoaded', function () {
+				const loading = document.getElementById('loading');
+				if (loading) {
+					loading.style.display = 'block';
+				}
+			});
+		</script>
 	</body>
 </html>
 
 <style>
-	img {
+	 img {
 		margin-bottom: 1rem;
+	}
+	#loading {
+		width: 100vw;
+		height: 100vh;
+		transition: all 1s;
+		background-color: rgb(255, 255, 255);
+
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 9999;
+	}
+	.spinner {
+		width: 100px;
+		height: 100px;
+		margin: 200px auto;
+		background-color: #9e9d9d;
+		border-radius: 100%;
+		animation: sk-scaleout 1.0s infinite ease-in-out;
+	}
+	/* ローディングアニメーション */
+	@keyframes sk-scaleout {
+		0% {
+			transform: scale(0);
+		} 100% {
+			transform: scale(1.0);
+			opacity: 0;
+		}
+	}
+	.loaded {
+		opacity: 0;
+		visibility: hidden;
+	}
+	#imageContainer{
+		animation: fadeIn 2s ease 0s 1 normal;
+    	-webkit-animation: fadeIn 2s ease 0s 1 normal;
+	}
+		@keyframes fadeIn {
+		0% {opacity: 0}
+		100% {opacity: 1}
 	}
 </style>
