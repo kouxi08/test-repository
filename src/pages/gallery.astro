@@ -16,7 +16,7 @@ async function fetchData() {
   }
 }
 const results = await fetchData();
-console.log(results)
+
 ---
 
 <!doctype html>
@@ -30,7 +30,6 @@ console.log(results)
 				<div class="spinner"></div>
 			</div>
 			<div id="imageContainer" style="display: none;">
-				<!-- <Loading /> -->
 				<ul class="columns-2 md:columns-3 lg:columns-4 xl:columns-5 mr-10 ml-10" >
 					{results && results.length > 0 ? (
 						results.map((url, index) => (
@@ -76,8 +75,6 @@ console.log(results)
 		background-color: rgb(255, 255, 255);
 
 		position: fixed;
-		top: 0;
-		left: 0;
 		z-index: 9999;
 	}
 	.spinner {

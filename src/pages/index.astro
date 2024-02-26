@@ -2,6 +2,8 @@
 import BaseHead from '../components/BaseHead.astro';
 import HeaderLink from '../components/HeaderLink.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import '@fontsource/freehand'
+import '@fontsource/gfs-didot'
 ---
 
 <!doctype html>
@@ -25,9 +27,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 					<li class="page_link">
 						<HeaderLink href="/gallery">gallery</HeaderLink>
 					</li>
-					<!-- <p class="page_link">
-						<HeaderLink href="/about">About</HeaderLink>
-					</p> -->
 				</ul>
 			</nav>
 			<nav>
@@ -53,12 +52,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 
 <style>
-/* じわっと画像が表示される */
-
 	body {
 		color: white;
-		animation: fadeIn 3s ease 0s 1 normal;
-    	-webkit-animation: fadeIn 3s ease 0s 1 normal;
+		animation: fadeIn 2s ease 0s 1 normal;
+    	-webkit-animation: fadeIn 2s ease 0s 1 normal;
 	}
 		@keyframes fadeIn { /*上のbody内で呼び出しているアニメーションと名前をそろえる*/
 		0% {opacity: 0} /* 始め */
@@ -83,7 +80,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		object-fit: cover;
 	}
 	.link{
-		font-family: "GFS Didot";font-size: 22px;
+		font-family: "GFS Didot";
 		display: flex;
 		list-style: none;
 		font-size: 1.5rem; /* text-2xl */
@@ -168,7 +165,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	}
 
 	.icon {
-		font-family: 'Freehand';font-size: 22px;
+		font-family: 'Freehand';
 		font-size: 125px;
 		top: 45%; /* top-0 */
 		left: 9%; /* right-0 */
