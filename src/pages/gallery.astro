@@ -20,7 +20,7 @@ const results = await fetchData();
 ---
 
 <!doctype html>
-<html lang="jp">
+<html lang="ja">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
@@ -34,7 +34,7 @@ const results = await fetchData();
 					{results && results.length > 0 ? (
 						results.map((url, index) => (
 							<li>
-								<img src={url} alt={`Image ${index}`} />
+								<img src={url} alt={`Image ${index}`} width="100%" height="auto"/>
 							</li>
 						))
 						) : (
