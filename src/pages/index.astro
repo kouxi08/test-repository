@@ -4,6 +4,10 @@ import HeaderLink from '../components/HeaderLink.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import '@fontsource/freehand'
 import '@fontsource/gfs-didot'
+
+
+
+
 ---
 
 <!doctype html>
@@ -12,47 +16,69 @@ import '@fontsource/gfs-didot'
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<header>
-			<img src="bg_image/DSC02333-5.webp" alt="bg_img" class="bg_img"/>
-			<p class="icon">kouxi photo</p>
-			<div class="width-border"/>
-			<div class="height-border"/>
+		<div class="openbtn"><span></span><span></span><span></span></div>
+		<p class="icon">kouxi photo</p>
+		<div class="width-border"/>
+		<div class="height-border"/>
+		<div class="black-overlay"></div>
 
-			<>
-			<nav>
-				<ul class = "link">
-					<li class = "page_link">
-						<HeaderLink href="/blog">BLOG</HeaderLink>
-					</li>
-					<li class="page_link">
-						<HeaderLink href="/gallery">GALLERY</HeaderLink>
-					</li>
-				</ul>
-			</nav>
-			<nav>
-				<div class = "sns">
-					<p>
-						<HeaderLink href="https://twitter.com/KouXi_3840">
-							<img src="sns_icon/x.png"width={20} height={20} alt="x" class="sns_img"/>
-						</HeaderLink>
-					</p>
-					<p>
-						<HeaderLink href="https://www.instagram.com/kou.0003">
-							<img src="sns_icon/Instagram.png" width={25} height={25} alt="Instagram" class="sns_img"/>
-						</HeaderLink>
-					</p>
-				</div>
-			</nav>
-		</header>
-		<main>
-		</main>
+		<nav>
+			<ul class = "link">
+				<li class = "page_link">
+					<HeaderLink href="/blog">BLOG</HeaderLink>
+				</li>
+				<li class="page_link">
+					<HeaderLink href="/gallery">GALLERY</HeaderLink>
+				</li>
+			</ul>
+		</nav>
+		<nav>
+			<div class = "sns">
+				<p>
+					<HeaderLink href="https://twitter.com/KouXi_3840">
+						<img src="sns_icon/x.png"width={20} height={20} alt="x" class="sns_img"/>
+					</HeaderLink>
+				</p>
+				<p>
+					<HeaderLink href="https://www.instagram.com/kou.0003">
+						<img src="sns_icon/Instagram.png" width={25} height={25} alt="Instagram" class="sns_img"/>
+					</HeaderLink>
+				</p>
+			</div>
+		</nav>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				var openbtn = document.querySelector('.openbtn') as HTMLElement;
+				var blackOverlay = document.querySelector('.black-overlay') as HTMLElement;
+				var pagelink = document.querySelector('.link') as HTMLElement;
+
+				openbtn.addEventListener('click', function() {
+					openbtn.classList.toggle('active');
+					// activeになったら黒い画面を表示
+					if (openbtn.classList.contains('active')) {
+						blackOverlay.style.display = 'block';
+						pagelink.style.display = 'block';
+					} else {
+						blackOverlay.style.display = 'none';
+						pagelink.style.display = 'none';
+					}
+				});
+			});
+		</script>
+
 	</body>
 </html>
 
 
-
 <style>
 	body {
+		background-image: url('bg_image/DSC02333-5.webp'); 
+		background-size:cover; 
+		background-position: center; 
+		background-repeat: no-repeat; 
+		width: 100vw; 
+  		height: 100vh; 
 		color: white;
 		animation: fadeIn 2s ease 0s 1 normal;
     	-webkit-animation: fadeIn 2s ease 0s 1 normal;
@@ -65,20 +91,6 @@ import '@fontsource/gfs-didot'
 		flex-direction: column;
 		align-items: center;
 	}
-	@media (min-width: 768px) {
-		header {
-			flex-direction: row;
-		}
-		header{
-			justify-content: space-between;
-		}
-	}
-	.bg_img {
-		width: 100vw; /* 画面の横幅に合わせる */
-  		height: 100vh; /* 画面の縦幅に合わせる */
-		position: relative;
-		object-fit: cover;
-	}
 	.link{
 		font-family: "GFS Didot";
 		display: flex;
@@ -88,6 +100,8 @@ import '@fontsource/gfs-didot'
 		top: 0; /* top-0 */
 		right: 6rem; /* right-0 */
 		padding: 2.5rem/* 32px */;
+		z-index: 1000; 
+		
 	}
 	.link li a {
 		display: block;
@@ -97,7 +111,7 @@ import '@fontsource/gfs-didot'
 		position: relative;
 	}
 	.link li a:hover {
-		color:#eeeeee;
+		color:#c6c6c6;
 	}
 	.link li a::after {
 		content: '';
@@ -119,11 +133,13 @@ import '@fontsource/gfs-didot'
 		margin-left: 1.25rem/* 20px */;
     	margin-right: 1.25rem/* 20px */;
 		letter-spacing: 5px
+		
 	}
 	.sns {
 		position: absolute; /* absolute */
 		top: 45%; /* top-0 */
 		right: 2%; /* right-0 */
+		z-index: 1000; 
 	}
 	.sns_img {
 		margin-bottom: 50px;
@@ -167,8 +183,119 @@ import '@fontsource/gfs-didot'
 	.icon {
 		font-family: 'Freehand';
 		font-size: 125px;
-		top: 45%; /* top-0 */
-		left: 9%; /* right-0 */
-		position: absolute; /* absolute */
+		margin: 0;
+		padding:  30% 0 0 8%;
+	}
+
+	.black-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(34, 34, 34, 0.9); /* 半透明の黒 */
+            z-index: 999; /* 他の要素よりも前面に表示 */
+            display: none; /* 初期状態では非表示 */
+        }
+
+
+	.openbtn{
+		display: none;
+		float: right;
+		position: relative;
+		cursor: pointer;
+		top: 2%;
+		right: 5%;
+		width: 50px;
+		height:50px;
+		z-index: 1000; /* 黒い画面よりも前面に表示 */
+	}
+
+	/*ボタン内側*/
+	.openbtn span{
+		text-align: center;
+		display: inline-block;
+		transition: all .4s;/*アニメーションの設定*/
+		position: absolute;
+		left: 14px;
+		height: 1.5px;
+		border-radius: 2px;
+		background: #fff;
+		width: 60%;
+	}
+
+	.openbtn span:nth-of-type(1) {
+		top:15px;	
+	}
+
+	.openbtn span:nth-of-type(2) {
+		top:25px;
+	}
+
+	.openbtn span:nth-of-type(3) {
+		top:35px;
+	}
+
+	/*activeクラスが付与されると線が回転して×に*/
+
+	.openbtn.active span:nth-of-type(1) {
+		top: 18px;
+		left: 18px;
+		transform: translateY(6px) rotate(-45deg);
+		width: 60%;
+	}
+
+	.openbtn.active span:nth-of-type(2) {
+		opacity: 0;/*真ん中の線は透過*/
+	}
+
+	.openbtn.active span:nth-of-type(3){
+		top: 30px;
+		left: 18px;
+		transform: translateY(-6px) rotate(45deg);
+		width: 60%;
+	}
+
+
+	@media (max-width: 768px) {
+		header {
+			flex-direction: row;
+		}
+		header{
+			justify-content: space-between;
+		}
+	}
+	@media (max-width: 680px) {
+		.height-border:before{
+			display: none; 
+		}
+		.width-border:before{
+			display: none; 
+		}
+		.sns{
+			display: none;
+		}
+		.icon {
+			padding: 75% 0 0 0;
+			text-align: center;
+			font-size: 70px;
+		}
+		.link {
+			display: none;
+			padding: 0;
+			margin: 0;
+			top:15%;
+			left: 0;
+			font-size: 20px;
+		}
+		.link li a::after {
+			display: none;
+		}
+		.page_link {
+			margin: 30px 30px;
+		}
+		.openbtn{
+			display: block;
+		}
 	}
 </style>
