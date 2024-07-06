@@ -3,19 +3,17 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app
 
 
-ARG domain
-ARG apikey
-ARG endpoint
-ARG usessl
-ARG accesskey
-ARG secretkey
+ARG DOMAIN
+ARG API_KEY
+ARG ENDPOINT
+ARG ACCESS_KEY
+ARG SECRET_KEY
 
-ENV MICROCMS_SERVICE_DOMAIN=${domain}
-ENV MICROCMS_API_KEY=${apikey}
-ENV ENDPOINT=${endpoint}
-ENV USE_SSL=true
-ENV ACCESS_KEY=${accesskey}
-ENV SECRET_ACCESS_KEY=${secretkey}
+ENV DOMAIN=${DOMAIN}
+ENV API_KEY=${API_KEY}
+ENV ENDPOINT=${ENDPOINT}
+ENV ACCESS_KEY=${ACCESS_KEY}
+ENV SECRET_KEY=${SECRET_KEY}
 
 RUN npm install
 RUN npm run build

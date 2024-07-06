@@ -3,9 +3,9 @@ import * as Minio from 'minio'
 const minioClient = new Minio.Client({
 
   endPoint: import.meta.env.ENDPOINT,
-  useSSL: import.meta.env.USESSL === 'true',
+  useSSL:true,
   accessKey: import.meta.env.ACCESS_KEY,
-  secretKey: import.meta.env.SECRET_ACCESS_KEY,
+  secretKey: import.meta.env.SECRET_KEY,
 })
 
 //バケット内に存在するオブジェクト名の一覧を取得する
